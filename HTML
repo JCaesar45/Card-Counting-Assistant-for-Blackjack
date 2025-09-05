@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blackjack Card Counting Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎲 Blackjack Card Counting Assistant 🎲</h1>
+    <div class="card-input">
+      <label for="cardInput">Enter Card (Number or String):</label>
+      <input type="text" id="cardInput" placeholder="e.g., 2, 7, J, A" />
+      <button id="addCardBtn">Add Card</button>
+    </div>
+    <div class="status">
+      <h2>Current Count & Decision:</h2>
+      <p id="result">0 Hold</p>
+    </div>
+    <div class="history">
+      <h3>Card History:</h3>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
