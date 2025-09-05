@@ -6,6 +6,7 @@ const cardInput = document.getElementById("cardInput");
 const addBtn = document.getElementById("addCardBtn");
 const resultDisplay = document.getElementById("result");
 const historyList = document.getElementById("historyList");
+const unitsDisplay = document.getElementById("unitsToBet");
 
 // Card counting function
 function cc(card) {
@@ -24,18 +25,33 @@ function cc(card) {
   return `${count} ${decision}`;
 }
 
+// Calculate units to bet
+function getUnits() {
+  // Example logic: bet units proportional to the count
+  // You can customize this as needed
+  return Math.max(count, 1);
+}
+
 // Update display
 function updateDisplay(card, resultText) {
   resultDisplay.textContent = resultText;
+
   // Add to history
   const li = document.createElement("li");
   li.textContent = `Card: ${card} → ${resultText}`;
   historyList.appendChild(li);
+
+  // Update units to bet
+  const units = getUnits();
+  unitsDisplay.textContent = units;
 }
 
 // Handle button click
 addBtn.addEventListener("click", () => {
-  const inputVal = cardInput.value.trim().toUpperCase();
+  const inputVal = document
+    .getElementById("cardInput")
+    .value.trim()
+    .toUpperCase();
   if (!inputVal) return;
 
   // Parse input
@@ -48,7 +64,7 @@ addBtn.addEventListener("click", () => {
 
   // Run cc function
   const result = cc(cardValue);
-  updateDisplay(cardValue, result); // <-- Corrected here
+  updateDisplay(cardValue, result);
   // Clear input
-  cardInput.value = "";
+  document.getElementById("cardInput").value = "";
 });
